@@ -1,24 +1,63 @@
 import streamlit as st
 import plotly.express as px
+import streamlit_lottie as st_lottie
+import requests
 
-st.set_page_config(page_title="Kalkulator Sampah Harian", layout="wide")
+# ------ SETTING HALAMAN ------
+st.set_page_config(page_title="Kalkulator Sampah", layout="wide")
 
-# ---------- MENU NAVIGASI ----------
-menu = st.sidebar.radio("Menu", ["Beranda", "Kalkulator", "Tentang Aplikasi"])
+# ------ FUNGSI LOTTIE ------
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-# ---------- BERANDA ----------
-if menu == "Beranda":
-    st.title("♻️ Selamat Datang di Kalkulator Sampah Harian")
-    st.markdown("""
-        Aplikasi ini membantu kamu menghitung estimasi sampah rumah tangga dan memberi tips pengurangannya.
-        
-        **Gunakan menu di kiri untuk mulai kalkulasi.**
-    """)
-    st.image("https://cdn-icons-png.flaticon.com/512/849/849379.png", width=200)
+lottie_recycle = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_tno6cg2w.json")
 
-# ---------- KALKULATOR ----------
-elif menu == "Kalkulator":
-    st.title("🧮 Kalkulator Sampah Harian")
+# ------ BOTTOM MENU SIMULASI ------
+menu = st.selectbox(
+    label="Navigasi",
+    options=["🏠 Beranda", "🧮 Kalkulator", "ℹ️ Tentang"],
+    index=0,
+    label_visibility="collapsed",
+)
+
+# ------ STYLE TAMBAHAN ------
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 0rem;
+    }
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #f0f4f3;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 16px;
+        color: #2E7D32;
+        border-top: 1px solid #ccc;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# ------ BERANDA ------
+if menu == "🏠 Beranda":
+    st.title("♻️ Kalkulator Sampah Harian")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Selamat Datang!")
+        st.write("Aplikasi ini membantumu menghitung estimasi sampah rumah tangga dan memberi tips ramah lingkungan.")
+    with col2:
+        st_lottie.st_lottie(lottie_recycle, height=250)
+
+# ------ KALKULATOR ------
+elif menu == "🧮 Kalkulator":
+    st.title("🧮 Hitung Sampah Harianmu")
+    st.write("Masukkan jumlah orang & aktivitas harian:")
 
     people = st.slider("Jumlah orang di rumah", 1, 10, 3)
     activity = st.selectbox("Tingkat aktivitas harian", ["Normal", "Aktif", "Banyak belanja"])
@@ -29,16 +68,16 @@ elif menu == "Kalkulator":
     elif activity == "Banyak belanja":
         base_waste += 0.5
 
-    total_waste = round(people * base_waste, 2)
-    organik = total_waste * 0.6
-    anorganik = total_waste * 0.35
-    b3 = total_waste * 0.05
+    total = round(people * base_waste, 2)
+    organik = total * 0.6
+    anorganik = total * 0.35
+    b3 = total * 0.05
 
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Total Sampah / Hari", f"{total_waste} kg")
+        st.metric("Total Sampah", f"{total} kg")
     with col2:
-        st.metric("Per Orang", f"{base_waste:.2f} kg")
+        st.metric("Sampah per Orang", f"{base_waste:.2f} kg")
 
     fig = px.pie(
         names=["Organik", "Anorganik", "B3"],
@@ -46,32 +85,32 @@ elif menu == "Kalkulator":
         color_discrete_sequence=['#81C784', '#4FC3F7', '#FF8A65'],
         title="Komposisi Sampah"
     )
-    fig.update_traces(textinfo='label+percent')
     st.plotly_chart(fig, use_container_width=True)
 
-    st.markdown("### Tips Pengurangan Sampah")
+    st.markdown("### Tips")
     if organik > anorganik:
-        st.success("Mulai kompos sampah organik!")
+        st.success("Mulai kompos dari sekarang!")
     if anorganik > 1:
-        st.info("Kurangi sampah plastik dengan tas belanja & botol minum.")
+        st.info("Kurangi plastik dan belanja bijak.")
     if b3 > 0.1:
-        st.warning("Pisahkan limbah B3 seperti baterai & obat.")
+        st.warning("Pisahkan limbah B3 seperti baterai!")
 
-# ---------- TENTANG ----------
-elif menu == "Tentang Aplikasi":
+# ------ TENTANG ------
+elif menu == "ℹ️ Tentang":
     st.title("ℹ️ Tentang Aplikasi")
     st.markdown("""
     Aplikasi ini dirancang untuk:
-    
-    - Membantu masyarakat menghitung sampah harian rumah tangga.
-    - Menyediakan tips edukatif untuk mengurangi limbah.
-    - Mendorong gaya hidup berkelanjutan.
+    - Mengedukasi tentang sampah harian rumah tangga
+    - Menyediakan tips pengurangan limbah
+    - Mendorong gaya hidup berkelanjutan
 
-    **Dibuat dengan:** Python & Streamlit  
-    **Versi:** 1.0  
-    **Pengembang:** [Nama kamu atau tim]  
+    **Dibuat oleh:** Kamu  
+    **Teknologi:** Streamlit + Plotly + Lottie
     """)
-    st.image("https://cdn-icons-png.flaticon.com/512/3616/3616591.png", width=150)
 
-st.markdown("---")
-st.caption("© 2025 - Edukasi Sampah & Lingkungan | Dibuat dengan Streamlit")
+# ------ BOTTOM NAV (Simulasi) ------
+st.markdown("""
+<div class="bottom-nav">
+    🏠 Beranda | 🧮 Kalkulator | ℹ️ Tentang
+</div>
+""", unsafe_allow_html=True)
