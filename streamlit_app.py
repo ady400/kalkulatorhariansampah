@@ -115,9 +115,3 @@ elif menu == "ℹ️ Tentang":
     **Teknologi:** Streamlit + Plotly + Lottie
     """)
 
-# ------ BOTTOM NAV (Simulasi) ------
-st.markdown("""
-<div class="bottom-nav">
-    🏠 Beranda | 🧮 Kalkulator | ℹ️ Tentang
-</div>
-""", unsafe_allow_html=True)
