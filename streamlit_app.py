@@ -16,11 +16,10 @@ def load_lottieurl(url: str):
 lottie_recycle = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_tno6cg2w.json")
 
 # ------ BOTTOM MENU SIMULASI ------
-menu = st.selectbox(
-    label="Navigasi",
-    options=["🏠 Beranda", "🧮 Kalkulator", "ℹ️ Tentang"],
-    index=0,
-    label_visibility="collapsed",
+st.sidebar.title("Menu Navigasi")
+menu = st.sidebar.radio(
+    "Pilih Halaman",
+    options=["🏠 Beranda", "🧮 Kalkulator", "ℹ️ Tentang"]
 )
 
 # ------ STYLE TAMBAHAN ------
@@ -29,6 +28,14 @@ st.markdown("""
     .block-container {
         padding-top: 1rem;
         padding-bottom: 0rem;
+    }
+    .sidebar .sidebar-content {
+        background-color: #f0f4f3;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar .sidebar-content .element-container {
+        padding-top: 10px;
     }
     .bottom-nav {
         position: fixed;
