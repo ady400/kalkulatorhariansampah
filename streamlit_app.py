@@ -14,21 +14,19 @@ def load_lottieurl(url: str):
     return r.json()
 
 # ------ LOAD LOTTIE ANIMASI ------
-lottie_recycle = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_tno6cg2w.json")
-lottie_sort = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_jtbfg2nb.json")
-lottie_truck = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_puciaact.json")
-lottie_compost = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_0fhlytwe.json")
-lottie_landfill = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json")
-lottie_info = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json")
-lottie_sidebar = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json")
+lottie_beranda = load_lottieurl("https://lottie.host/7012c055-a4d1-45ed-a418-072d297976da/oNk7iDlYc4.json")
+lottie_kalkulator = load_lottieurl("https://lottie.host/111b6b6e-bf2c-4038-ac15-befa1b812447/hcB9Tj71nP.json")
+lottie_proses = load_lottieurl("https://lottie.host/86f268c8-56cf-48dd-9386-dbbaec9c85a3/6nnch2E4UO.json")
+lottie_tentang = load_lottieurl("https://lottie.host/be996198-0326-4825-84ab-df2b87cf6fe7/abSuY84DLW.json")
+lottie_sidebar = load_lottieurl("https://lottie.host/ecf5efac-13f3-4b3f-8f18-db129ef7022b/9UjhCTdYbi.json")
 
 
 # ------ MENU NAVIGASI ------
 st.sidebar.title("Menu Navigasi")
- st_lottie(lottie_sidebar, speed=1, loop=True, quality="high", height=150)
+st_lottie(lottie_sidebar, speed=1, loop=True, quality="high", height=150)
 menu = st.sidebar.radio(
     "Pilih Halaman",
-    options=["🏠 Beranda", "🧮 Kalkulator", "🔄 Proses", "ℹ️ Tentang"]
+    options=["🏠 Beranda", "🔄 Proses", "🧮 Kalkulator", "ℹ️ Tentang"]
 )
 
 # ------ STYLE TAMBAHAN ------
@@ -59,16 +57,17 @@ st.markdown("""
 
 # ------ BERANDA ------
 if menu == "🏠 Beranda":
-    st.title("♻️ Kalkulator Sampah Harian")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader("Selamat Datang!")
-        st.write("Aplikasi ini membantumu menghitung estimasi sampah rumah tangga dan memberi tips ramah lingkungan.")
-    with col2:
-        st_lottie(lottie_recycle, height=250)
+    st_lottie(lottie_beranda, speed=1, loop=True, quality="high", height=300)
+    st.markdown("""
+    <div style='text-align: center; padding: 30px 0;'>
+        <h1 style='color:#2C3E50;'>♻️ Kalkulator sampah harian ♻️</h1>
+        <p style='font-size:18px; color:#555;'>Belajar proses pengolahan sampah harian.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ------ KALKULATOR ------
 elif menu == "🧮 Kalkulator":
+    st_lottie(lottie_kalkulator, speed=1, loop=True, quality="high", height=200)
     st.title("🧮 Hitung Sampah Harianmu")
     st.write("Masukkan jumlah orang & aktivitas harian:")
 
@@ -110,6 +109,7 @@ elif menu == "🧮 Kalkulator":
 
 # ------ PROSES ------
 elif menu == "🔄 Proses":
+    st_lottie(lottie_proses, speed=1, loop=True, quality="high", height=200)
     st.title("🔄 Proses Pengelolaan Sampah")
 
     st.markdown("Berikut adalah tahapan umum dalam pengelolaan sampah rumah tangga:")
@@ -136,6 +136,7 @@ elif menu == "🔄 Proses":
 
 # ------ TENTANG ------
 elif menu == "ℹ️ Tentang":
+    st_lottie(lottie_tentang, speed=1, loop=True, quality="high", height=150)
     st.title("ℹ️ Tentang Aplikasi")
     col1, col2 = st.columns(2)
     with col1:
