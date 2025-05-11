@@ -66,6 +66,33 @@ if menu == "🏠 Beranda":
         <p style='font-size:18px; color:#555;'>Belajar proses pengolahan sampah harian.</p>
     </div>
     """, unsafe_allow_html=True)
+# ------ PROSES ------
+elif menu == "🔄 Proses":
+    st_lottie(lottie_proses, speed=1, loop=True, quality="high", height=200)
+    st.title("🔄 Proses Pengelolaan Sampah")
+
+    st.markdown("Berikut adalah tahapan umum dalam pengelolaan sampah rumah tangga:")
+
+    with st.expander("📌 1. Pemilahan"):
+        st.write("Pisahkan sampah menjadi Organik, Anorganik, dan B3 sejak di rumah.")
+        st_lottie(lottie_sort, height=200)
+
+    with st.expander("📌 2. Pengumpulan"):
+        st.write("Sampah dikumpulkan berdasarkan jenis untuk memudahkan pemrosesan.")
+        st_lottie(lottie_truck, height=200)
+
+    with st.expander("📌 3. Pengangkutan"):
+        st.write("Petugas kebersihan mengangkut sampah ke TPS atau pusat daur ulang.")
+        st_lottie(lottie_truck, height=200)
+
+    with st.expander("📌 4. Pemrosesan / Daur Ulang"):
+        st.write("Organik → Kompos, Anorganik → Daur ulang, B3 → Penanganan khusus.")
+        st_lottie(lottie_compost, height=200)
+
+    with st.expander("📌 5. Pembuangan Akhir"):
+        st.write("Sampah sisa yang tidak bisa diproses dibuang ke TPA secara aman.")
+        st_lottie(lottie_landfill, height=200)
+
 
 # ------ KALKULATOR ------
 elif menu == "🧮 Kalkulator":
@@ -108,33 +135,7 @@ elif menu == "🧮 Kalkulator":
         st.info("Kurangi plastik dan belanja bijak.")
     if b3 > 0.1:
         st.warning("Pisahkan limbah B3 seperti baterai!")
-
-# ------ PROSES ------
-elif menu == "🔄 Proses":
-    st_lottie(lottie_proses, speed=1, loop=True, quality="high", height=200)
-    st.title("🔄 Proses Pengelolaan Sampah")
-
-    st.markdown("Berikut adalah tahapan umum dalam pengelolaan sampah rumah tangga:")
-
-    with st.expander("📌 1. Pemilahan"):
-        st.write("Pisahkan sampah menjadi Organik, Anorganik, dan B3 sejak di rumah.")
-        st_lottie(lottie_sort, height=200)
-
-    with st.expander("📌 2. Pengumpulan"):
-        st.write("Sampah dikumpulkan berdasarkan jenis untuk memudahkan pemrosesan.")
-        st_lottie(lottie_truck, height=200)
-
-    with st.expander("📌 3. Pengangkutan"):
-        st.write("Petugas kebersihan mengangkut sampah ke TPS atau pusat daur ulang.")
-        st_lottie(lottie_truck, height=200)
-
-    with st.expander("📌 4. Pemrosesan / Daur Ulang"):
-        st.write("Organik → Kompos, Anorganik → Daur ulang, B3 → Penanganan khusus.")
-        st_lottie(lottie_compost, height=200)
-
-    with st.expander("📌 5. Pembuangan Akhir"):
-        st.write("Sampah sisa yang tidak bisa diproses dibuang ke TPA secara aman.")
-        st_lottie(lottie_landfill, height=200)
+        
 
 # ------ TENTANG ------
 elif menu == "ℹ️ Tentang":
