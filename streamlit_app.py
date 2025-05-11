@@ -1,10 +1,10 @@
 import streamlit as st
 import plotly.express as px
-import streamlit_lottie as st_lottie
+from streamlit_lottie import st_lottie
 import requests
 
 # ------ SETTING HALAMAN ------
-st.set_page_config(page_title="Kalkulator Sampah", layout="wide")
+st.set_page_config(page_title="🧮Kalkulator Sampah", layout="wide")
 
 # ------ FUNGSI LOTTIE ------
 def load_lottieurl(url: str):
@@ -13,13 +13,22 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
+# ------ LOAD LOTTIE ANIMASI ------
 lottie_recycle = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_tno6cg2w.json")
+lottie_sort = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_jtbfg2nb.json")
+lottie_truck = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_puciaact.json")
+lottie_compost = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_0fhlytwe.json")
+lottie_landfill = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json")
+lottie_info = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json")
+lottie_sidebar = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json")
 
-# ------ BOTTOM MENU SIMULASI ------
+
+# ------ MENU NAVIGASI ------
 st.sidebar.title("Menu Navigasi")
+ st_lottie(lottie_sidebar, speed=1, loop=True, quality="high", height=150)
 menu = st.sidebar.radio(
     "Pilih Halaman",
-    options=["🏠 Beranda", "🧮 Kalkulator", "ℹ️ Tentang"]
+    options=["🏠 Beranda", "🧮 Kalkulator", "🔄 Proses", "ℹ️ Tentang"]
 )
 
 # ------ STYLE TAMBAHAN ------
@@ -33,9 +42,6 @@ st.markdown("""
         background-color: #f0f4f3;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .sidebar .sidebar-content .element-container {
-        padding-top: 10px;
     }
     .bottom-nav {
         position: fixed;
@@ -59,7 +65,7 @@ if menu == "🏠 Beranda":
         st.subheader("Selamat Datang!")
         st.write("Aplikasi ini membantumu menghitung estimasi sampah rumah tangga dan memberi tips ramah lingkungan.")
     with col2:
-        st_lottie.st_lottie(lottie_recycle, height=250)
+        st_lottie(lottie_recycle, height=250)
 
 # ------ KALKULATOR ------
 elif menu == "🧮 Kalkulator":
@@ -102,16 +108,45 @@ elif menu == "🧮 Kalkulator":
     if b3 > 0.1:
         st.warning("Pisahkan limbah B3 seperti baterai!")
 
+# ------ PROSES ------
+elif menu == "🔄 Proses":
+    st.title("🔄 Proses Pengelolaan Sampah")
+
+    st.markdown("Berikut adalah tahapan umum dalam pengelolaan sampah rumah tangga:")
+
+    with st.expander("📌 1. Pemilahan"):
+        st.write("Pisahkan sampah menjadi Organik, Anorganik, dan B3 sejak di rumah.")
+        st_lottie(lottie_sort, height=200)
+
+    with st.expander("📌 2. Pengumpulan"):
+        st.write("Sampah dikumpulkan berdasarkan jenis untuk memudahkan pemrosesan.")
+        st_lottie(lottie_truck, height=200)
+
+    with st.expander("📌 3. Pengangkutan"):
+        st.write("Petugas kebersihan mengangkut sampah ke TPS atau pusat daur ulang.")
+        st_lottie(lottie_truck, height=200)
+
+    with st.expander("📌 4. Pemrosesan / Daur Ulang"):
+        st.write("Organik → Kompos, Anorganik → Daur ulang, B3 → Penanganan khusus.")
+        st_lottie(lottie_compost, height=200)
+
+    with st.expander("📌 5. Pembuangan Akhir"):
+        st.write("Sampah sisa yang tidak bisa diproses dibuang ke TPA secara aman.")
+        st_lottie(lottie_landfill, height=200)
+
 # ------ TENTANG ------
 elif menu == "ℹ️ Tentang":
     st.title("ℹ️ Tentang Aplikasi")
-    st.markdown("""
-    Aplikasi ini dirancang untuk:
-    - Mengedukasi tentang sampah harian rumah tangga
-    - Menyediakan tips pengurangan limbah
-    - Mendorong gaya hidup berkelanjutan
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+        Aplikasi ini dirancang untuk:
+        - Mengedukasi tentang sampah harian rumah tangga  
+        - Menyediakan tips pengurangan limbah  
+        - Mendorong gaya hidup berkelanjutan  
 
-    **Dibuat oleh:** Kamu  
-    **Teknologi:** Streamlit + Plotly + Lottie
-    """)
-
+        **Dibuat oleh:** Nama Kamu  
+        **Teknologi:** Streamlit + Plotly + Lottie  
+        """)
+    with col2:
+        st_lottie(lottie_info, height=250)
