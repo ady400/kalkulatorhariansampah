@@ -22,12 +22,14 @@ lottie_sidebar = load_lottieurl("https://lottie.host/ecf5efac-13f3-4b3f-8f18-db1
 
 
 # ------ MENU NAVIGASI ------
-st.sidebar.title("Menu Navigasi")
-st_lottie(lottie_sidebar, speed=1, loop=True, quality="high", height=150)
-menu = st.sidebar.radio(
-    "Pilih Halaman",
-    options=["🏠 Beranda", "🔄 Proses", "🧮 Kalkulator", "ℹ️ Tentang"]
-)
+with st.sidebar:
+    st_lottie(lottie_sidebar, speed=1, loop=True, quality="high", height=150)
+    st.title("♻️ kalkulator Sampah Harian")
+    st.markdown("Belajar Pengolahan Sampah harian")
+    st.markdown("---")
+    menu = st.radio("Navigasi", ["🏠 Beranda", "🔄 Proses", "🧮 Kalkulator", "ℹ️ Tentang"])
+    st.markdown("---")
+    st.caption("© 2025 Kelompok 4 - 1F PLI AKA")
 
 # ------ STYLE TAMBAHAN ------
 st.markdown("""
