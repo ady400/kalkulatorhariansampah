@@ -149,6 +149,7 @@ elif menu == "ℹ️ Tentang":
         - Mendorong gaya hidup berkelanjutan  
 
         **Dibuat oleh:** Kelompok 5-PLI AKA
+        
         **Teknologi:** Streamlit + Plotly + Lottie  
         """)
     
