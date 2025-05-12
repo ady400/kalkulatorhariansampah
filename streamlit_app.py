@@ -69,6 +69,7 @@ if menu == "🏠 Beranda":
 # ------ PROSES ------
 elif menu == "🔄 Proses":
     st_lottie(lottie_proses, speed=1, loop=True, quality="high", height=200)
+    st.markdown("<div style='margin-top: 30px'></div>", unsafe_allow_html=True)
     st.title("🔄 Proses Pengelolaan Sampah")
 
     st.markdown("Berikut adalah tahapan umum dalam pengelolaan sampah rumah tangga:")
@@ -97,6 +98,7 @@ elif menu == "🔄 Proses":
 # ------ KALKULATOR ------
 elif menu == "🧮 Kalkulator":
     st_lottie(lottie_kalkulator, speed=1, loop=True, quality="high", height=200)
+    st.markdown("<div style='margin-top: 30px'></div>", unsafe_allow_html=True)
     st.title("🧮 Hitung Sampah Harianmu")
     st.write("Masukkan jumlah orang & aktivitas harian:")
 
@@ -140,6 +142,7 @@ elif menu == "🧮 Kalkulator":
 # ------ TENTANG ------
 elif menu == "ℹ️ Tentang":
     st_lottie(lottie_tentang, speed=1, loop=True, quality="high", height=150)
+    st.markdown("<div style='margin-top: 30px'></div>", unsafe_allow_html=True)
     st.title("ℹ️ Tentang Aplikasi")
     col1, col2 = st.columns(2)
     with col1:
