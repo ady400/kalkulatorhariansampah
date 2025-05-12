@@ -148,7 +148,7 @@ elif menu == "ℹ️ Tentang":
         - Menyediakan tips pengurangan limbah  
         - Mendorong gaya hidup berkelanjutan  
 
-        **Dibuat oleh:** Kelompok 4-PLI AKA
+        **Dibuat oleh:** Kelompok 5-PLI AKA
         **Teknologi:** Streamlit + Plotly + Lottie  
         """)
     
