@@ -29,7 +29,6 @@ with st.sidebar:
     st.markdown("---")
     menu = st.radio("Navigasi", ["🏠 Beranda", "🔄 Proses", "🧮 Kalkulator", "ℹ️ Tentang"])
     st.markdown("---")
-    st.caption("© 2025 Kelompok 4 - 1F PLI AKA")
 
 # ------ STYLE TAMBAHAN ------
 st.markdown("""
@@ -149,7 +148,7 @@ elif menu == "ℹ️ Tentang":
         - Menyediakan tips pengurangan limbah  
         - Mendorong gaya hidup berkelanjutan  
 
-        **Dibuat oleh:** Nama Kamu  
+        **Dibuat oleh:** Kelompok 4-PLI AKA
         **Teknologi:** Streamlit + Plotly + Lottie  
         """)
     
