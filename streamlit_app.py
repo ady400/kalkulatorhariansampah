@@ -161,8 +161,8 @@ elif menu == "🧮 Kalkulator":
                 st.metric("Total Sampah", f"{total_manual} kg")
             with col2:
                 st.metric("Sampah per Orang", f"{total_manual / people:.2f} kg")
-        if (total_manual / people) > 2:
-            st.error("⚠️ Oops! Kamu membuang sampah melebihi 2 kg per orang per hari. Yuk kurangi jumlahnya!")
+            if (total_manual / people) > 2:
+                st.error("⚠️ Oops! Kamu membuang sampah melebihi 2 kg per orang per hari. Yuk kurangi jumlahnya!")
 
 
             fig_manual = px.pie(
