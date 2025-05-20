@@ -198,5 +198,7 @@ elif menu == "ℹ️ Tentang":
         **Dibuat oleh:** Kelompok 5-PLI AKA
         
         **Teknologi:** Streamlit + Plotly + Lottie  
+
+        **Baku Mutu:** Peraturan Menteri Lingkungan Hidup dan Kehutanan (Permen LHK) No. P.75 Tahun 2019
         """)
     
